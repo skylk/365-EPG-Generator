@@ -3,6 +3,9 @@
 #v2.19.0
 
 # Nastavení
+
+nazev_souboru = "epg.xml"
+
 # Počet dní (1-15)
 days = 3
 
@@ -78,7 +81,7 @@ except Exception as ex:
 
 
 dn = os.path.dirname(os.path.realpath(__file__))
-fn = os.path.join(dn,"epg.xml")
+fn = os.path.join(dn,nazev_souboru)
 custom_names_path = os.path.join(dn,"custom_names.txt")
 now = datetime.now()
 local_now = now.astimezone()
@@ -658,7 +661,7 @@ def main():
                     ftp.login(ftp_login, ftp_password)
                     ftp.cwd(ftp_folder)
                     file = open(fn, "rb")
-                    ftp.storbinary('STOR ' + "epg.xml", file)
+                    ftp.storbinary('STOR ' + nazev_souboru, file)
                     file.close()
                     ftp.quit()
                 except Exception as ex:
